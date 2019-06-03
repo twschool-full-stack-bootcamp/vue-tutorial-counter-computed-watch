@@ -1,14 +1,18 @@
 <template>
   <div id="app">
-    <button>+</button>
-    <button>-</button>
+    <button v-on:click="count += 1">+</button>
+    <button v-on:click="count -= 1">-</button>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "app",
+  data() {
+    return {
+      count: 0
+    };
+  }
 };
 </script>
 
