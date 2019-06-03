@@ -1,17 +1,13 @@
 <template>
   <div id="app">
-    <button v-on:click="increase()">+</button>
-    <div>
-      <input placeholder="0" v-model="count">
-    </div>
-    <CounterComponent v-bind:count="formatCount"></CounterComponent>
-    <button v-on:click="decrease()">-</button>
+    <button v-on:click="count += 1">+</button>
+    <CounterComponent v-bind:count="count"></CounterComponent>
+    <button v-on:click="count -= 1">-</button>
   </div>
 </template>
 
 <script>
 import CounterComponent from "./components/CounterComponent.vue";
-import { parse } from "@babel/parser";
 
 export default {
   name: "app",
@@ -20,21 +16,8 @@ export default {
       count: 0
     };
   },
-  computed: {
-    formatCount: function() {
-      return parseInt(this.count);
-    }
-  },
   components: {
     CounterComponent
-  },
-  methods: {
-    increase: function() {
-      return (this.count = parseInt(this.count) + 1);
-    },
-    decrease: function() {
-      return (this.count = parseInt(this.count) - 1);
-    }
   }
 };
 </script>
